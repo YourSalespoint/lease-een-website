@@ -3,17 +3,23 @@
 import { useState, useEffect } from 'react';
 
 // ── LOGO COMPONENT ─────────────────────────────────────────────────────────
+const LOGO_FRAMES = [
+  ['#0050FF','rgba(0,80,255,0.3)','rgba(0,80,255,0.12)','rgba(0,80,255,0.08)','#0050FF','rgba(0,80,255,0.12)','rgba(0,80,255,0.28)','rgba(0,80,255,0.08)','#0050FF','rgba(0,80,255,0.08)','rgba(0,80,255,0.12)','#00C8A8','#0050FF','#0050FF','#0050FF','#00C8A8'],
+  ['#0050FF','#0050FF','rgba(0,80,255,0.2)','rgba(0,80,255,0.08)','rgba(0,80,255,0.3)','#0050FF','rgba(0,80,255,0.12)','rgba(0,80,255,0.08)','#0050FF','rgba(0,80,255,0.2)','#00C8A8','rgba(0,200,168,0.3)','#0050FF','#0050FF','#00C8A8','#00C8A8'],
+  ['rgba(0,80,255,0.4)','#0050FF','#0050FF','rgba(0,80,255,0.15)','#0050FF','rgba(0,80,255,0.2)','#0050FF','rgba(0,80,255,0.1)','rgba(0,80,255,0.15)','#0050FF','rgba(0,80,255,0.3)','#00C8A8','#0050FF','rgba(0,80,255,0.5)','#0050FF','#00C8A8'],
+  ['#0050FF','rgba(0,80,255,0.15)','rgba(0,80,255,0.3)','rgba(0,80,255,0.08)','#0050FF','#0050FF','rgba(0,80,255,0.1)','rgba(0,80,255,0.12)','#0050FF','rgba(0,80,255,0.12)','#0050FF','#00C8A8','rgba(0,80,255,0.6)','#0050FF','#0050FF','#00C8A8'],
+];
+
 function LogoMark({ size = 'md' }) {
   const cellSize = size === 'sm' ? 8 : size === 'lg' ? 14 : 10;
   const gap = size === 'sm' ? 2 : size === 'lg' ? 3 : 2;
   const radius = size === 'sm' ? 2 : 3;
+  const [frame, setFrame] = useState(0);
 
-  const PATTERN = [
-    '#0050FF', 'rgba(0,80,255,0.3)', 'rgba(0,80,255,0.12)', 'rgba(0,80,255,0.08)',
-    '#0050FF', 'rgba(0,80,255,0.12)', 'rgba(0,80,255,0.28)', 'rgba(0,80,255,0.08)',
-    '#0050FF', 'rgba(0,80,255,0.08)', 'rgba(0,80,255,0.12)', '#00C8A8',
-    '#0050FF', '#0050FF', '#0050FF', '#00C8A8',
-  ];
+  useEffect(() => {
+    const id = setInterval(() => setFrame(f => (f + 1) % LOGO_FRAMES.length), 900);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div
@@ -25,7 +31,7 @@ function LogoMark({ size = 'md' }) {
         flexShrink: 0,
       }}
     >
-      {PATTERN.map((color, i) => (
+      {LOGO_FRAMES[frame].map((color, i) => (
         <div
           key={i}
           style={{
@@ -33,6 +39,7 @@ function LogoMark({ size = 'md' }) {
             borderRadius: `${radius}px`,
             width: cellSize,
             height: cellSize,
+            transition: 'background 0.6s ease',
           }}
         />
       ))}
@@ -303,7 +310,23 @@ const STEPS = [
 
 function StepperSection() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
   const fillPct = (active / (STEPS.length - 1)) * 100;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActive(a => (a + 1) % STEPS.length);
+    }, 3000);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const handleClick = (i) => {
+    setActive(i);
+    setPaused(true);
+    // hervat auto-advance na 8 seconden stilstand
+    setTimeout(() => setPaused(false), 8000);
+  };
 
   return (
     <section className="steps" id="hoe-het-werkt" aria-labelledby="steps-heading">
@@ -326,7 +349,7 @@ function StepperSection() {
             <button
               key={step.n}
               className={`stepper-btn${active === i ? ' active' : ''}`}
-              onClick={() => setActive(i)}
+              onClick={() => handleClick(i)}
               role="tab"
               aria-selected={active === i}
               aria-controls="stepper-panel"
