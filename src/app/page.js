@@ -267,6 +267,91 @@ function ContactForm() {
   );
 }
 
+// ── STEPPER SECTION ────────────────────────────────────────────────────────
+const STEPS = [
+  {
+    n: '01',
+    icon: <IconChat />,
+    title: 'Kennismaking',
+    text: 'We leren jouw bedrijf kennen via een kort gesprek of intake. Wat doe je, voor wie, en wat moet de website uitstralen? Dat is alles wat we nodig hebben om direct aan de slag te gaan.',
+  },
+  {
+    n: '02',
+    icon: <IconRocket />,
+    title: 'Wij bouwen',
+    text: 'Onze designers en developers bouwen een snelle, moderne website op maat. Professionele copy, strak design, technisch geoptimaliseerd voor Google. Alles op basis van jouw input.',
+  },
+  {
+    n: '03',
+    icon: <IconStar />,
+    title: 'Jij keurt goed',
+    text: 'Je bekijkt de live preview en geeft feedback. We passen aan tot jij 100% tevreden bent. Pas daarna gaat de website online — jij hebt het laatste woord.',
+  },
+  {
+    n: '04',
+    icon: <IconGlobe />,
+    title: 'Live & zorgeloos',
+    text: 'Je website staat online. Wij regelen hosting, updates, beveiliging en technisch onderhoud. Jij richt je op je bedrijf, wij houden de website draaiende.',
+  },
+  {
+    n: '05',
+    icon: <IconRefresh />,
+    title: 'Doorlopend ontzorgd',
+    text: 'Na de livegang blijven wij op de achtergrond actief. Updates, backups, aanpassingen en vragen — je hoeft nooit zelf bij te houden of alles nog werkt.',
+  },
+];
+
+function StepperSection() {
+  const [active, setActive] = useState(0);
+  const fillPct = (active / (STEPS.length - 1)) * 100;
+
+  return (
+    <section className="steps" id="hoe-het-werkt" aria-labelledby="steps-heading">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-tag">Werkwijze</span>
+          <h2 id="steps-heading" className="section-title">
+            Van aanvraag tot live in <span className="gradient-text">5 stappen</span>
+          </h2>
+          <p className="section-sub">
+            Wij ontzorgen je volledig. Jij hoeft alleen maar te zeggen wat je bedrijf doet — de rest regelen wij.
+          </p>
+        </div>
+
+        {/* Track */}
+        <div className="stepper-track" role="tablist" aria-label="Werkwijze stappen">
+          <div className="stepper-line-bg" />
+          <div className="stepper-line-fill" style={{ width: `${fillPct}%` }} />
+          {STEPS.map((step, i) => (
+            <button
+              key={step.n}
+              className={`stepper-btn${active === i ? ' active' : ''}`}
+              onClick={() => setActive(i)}
+              role="tab"
+              aria-selected={active === i}
+              aria-controls="stepper-panel"
+            >
+              <div className="stepper-circle">
+                {step.icon}
+              </div>
+              <span className="stepper-label">{step.title}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Panel */}
+        <div className="stepper-panel" id="stepper-panel" role="tabpanel">
+          <div className="stepper-panel-num">{STEPS[active].n}</div>
+          <div className="stepper-panel-content">
+            <h3>{STEPS[active].title}</h3>
+            <p>{STEPS[active].text}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── FAQ SCHEMA ─────────────────────────────────────────────────────────────
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -472,59 +557,7 @@ export default function HomePage() {
         </section>
 
         {/* ── HOE HET WERKT ── */}
-        <section className="steps" id="hoe-het-werkt" aria-labelledby="steps-heading">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-tag">Werkwijze</span>
-              <h2 id="steps-heading" className="section-title">
-                Van aanvraag tot live in <span className="gradient-text">5 stappen</span>
-              </h2>
-              <p className="section-sub">
-                Wij ontzorgen je volledig. Jij hoeft alleen maar te zeggen wat je bedrijf doet — de rest regelen wij.
-              </p>
-            </div>
-            <div className="steps-grid">
-              {[
-                {
-                  n: '01',
-                  icon: <IconChat />,
-                  title: 'Kennismaking',
-                  text: 'We leren jouw bedrijf kennen via een kort gesprek of intake. Wat doe je, voor wie, en wat moet de website uitstralen? Dat is alles wat we nodig hebben.',
-                },
-                {
-                  n: '02',
-                  icon: <IconRocket />,
-                  title: 'Wij bouwen',
-                  text: 'Onze designers en developers bouwen een snelle, moderne website op maat. Professionele copy, strak design, technisch geoptimaliseerd voor Google.',
-                },
-                {
-                  n: '03',
-                  icon: <IconStar />,
-                  title: 'Jij keurt goed',
-                  text: 'Je bekijkt de live preview en geeft feedback. We passen aan tot jij 100% tevreden bent. Pas daarna gaat de website online.',
-                },
-                {
-                  n: '04',
-                  icon: <IconGlobe />,
-                  title: 'Live & zorgeloos',
-                  text: 'Je website staat online. Wij regelen hosting, updates, beveiliging en technisch onderhoud. Jij richt je op je bedrijf, wij houden de website draaiende.',
-                },
-                {
-                  n: '05',
-                  icon: <IconRefresh />,
-                  title: 'Doorlopend ontzorgd',
-                  text: 'Na de livegang blijven wij op de achtergrond actief. Updates, backups, aanpassingen en vragen — je hoeft nooit zelf bij te houden of alles nog werkt.',
-                },
-              ].map((step) => (
-                <div key={step.n} className="step-card">
-                  <div className="step-number">{step.n}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <StepperSection />
 
         {/* ── WAT JE KRIJGT / VOORDELEN ── */}
         <section id="wat-je-krijgt" aria-labelledby="voordelen-heading">
