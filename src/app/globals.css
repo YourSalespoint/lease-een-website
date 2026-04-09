@@ -480,6 +480,7 @@ section {
 /* Floating tags */
 .hero-float-tag {
   position: absolute;
+  z-index: 5;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 40px;
@@ -591,8 +592,8 @@ section {
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   position: relative;
 }
 
@@ -664,7 +665,7 @@ section {
 .voordelen-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  gap: 20px;
 }
 
 .voordeel-card {
@@ -702,6 +703,32 @@ section {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.7;
+}
+
+/* ─── ADD-ON GOOGLE ADS ──────────────────────────────────── */
+.addon-section {
+  background: var(--bg-surface);
+}
+
+.addon-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.addon-price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+@media (max-width: 1024px) {
+  .addon-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
 }
 
 /* ─── INCLUSIEF ──────────────────────────────────────────── */
@@ -1402,7 +1429,7 @@ section {
 /* ─── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .steps-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .step-connector {

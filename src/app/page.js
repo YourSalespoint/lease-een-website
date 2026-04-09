@@ -267,6 +267,49 @@ function ContactForm() {
   );
 }
 
+// ── FAQ SCHEMA ─────────────────────────────────────────────────────────────
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wat betekent "een website leasen" precies?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Leasen betekent dat jij een professionele website gebruikt tegen een vast maandtarief, zonder hoge eenmalige bouwkosten. Wij blijven eigenaar van de technische infrastructuur en zorgen voor hosting, onderhoud en updates. Jij profiteert van een toppresterende website zonder kapitaal vast te zetten.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kan ik op elk moment opzeggen?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Na de minimale looptijd van 3 maanden kun je maandelijks opzeggen. Er zijn geen langlopende contracten of verborgen opzegkosten. Als je stopt, nemen we de website offline — maar je kunt de content altijd meenemen.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Hoe snel staat mijn website online?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In de meeste gevallen is jouw website binnen 3 tot 5 werkdagen live. We starten direct na je akkoord op de ontwerp- en copyrichting.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kan ik zelf teksten of afbeeldingen aanpassen?',
+      acceptedAnswer: { '@type': 'Answer', text: 'In het Starter-pakket nemen wij kleine wijzigingen voor je door. In Business en Pro zijn periodieke contentupdates inbegrepen. Grotere aanpassingen of nieuwe pagina\'s kunnen we altijd in overleg plannen.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wat als ik al een domeinnaam heb?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Geen probleem. Wij koppelen je bestaande domein aan de nieuwe website. Je hoeft zelf niets in te stellen — we regelen de DNS-wijzigingen voor je.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is een website leasen duurder dan kopen?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Op de lange termijn vergelijkbaar, maar zonder het risico en zonder het kapitaalbeslag. Een traditionele website kost €2.000 – €8.000 eenmalig, plus hosting en onderhoud. Bij ons is alles inbegrepen voor één vast maandbedrag.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wat als ik de website later wil kopen?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Dat is mogelijk. Na 12 maanden lease bieden we een koopoptie aan tegen een gereduceerde prijs. Neem contact op voor de actuele voorwaarden.' },
+    },
+  ],
+};
+
 // ── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
@@ -282,11 +325,16 @@ export default function HomePage() {
     { label: 'Hoe het werkt', href: '#hoe-het-werkt' },
     { label: 'Wat je krijgt', href: '#wat-je-krijgt' },
     { label: 'Prijzen', href: '#prijzen' },
+    { label: 'Google Ads', href: '/google-ads' },
     { label: 'FAQ', href: '#faq' },
   ];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ── NAV ── */}
       <nav className={`nav${scrolled ? ' scrolled' : ''}`} aria-label="Hoofdnavigatie">
         <div className="container">
@@ -461,6 +509,12 @@ export default function HomePage() {
                   title: 'Live & zorgeloos',
                   text: 'Je website staat online. Wij regelen hosting, updates, beveiliging en technisch onderhoud. Jij richt je op je bedrijf, wij houden de website draaiende.',
                 },
+                {
+                  n: '05',
+                  icon: <IconRefresh />,
+                  title: 'Doorlopend ontzorgd',
+                  text: 'Na de livegang blijven wij op de achtergrond actief. Updates, backups, aanpassingen en vragen — je hoeft nooit zelf bij te houden of alles nog werkt.',
+                },
               ].map((step) => (
                 <div key={step.n} className="step-card">
                   <div className="step-number">{step.n}</div>
@@ -543,7 +597,7 @@ export default function HomePage() {
                 <ul className="inclusief-list" aria-label="Altijd inbegrepen">
                   {[
                     { title: 'Professioneel webdesign op maat', text: 'Geen templates. Een uniek ontwerp dat past bij jouw merk en doelgroep.' },
-                    { title: 'Razendsnelle hosting via Vercel', text: 'Edge-netwerk met servers wereldwijd. Laadtijd onder de 1 seconde.' },
+                    { title: 'Razendsnelle hosting', text: 'Edge-netwerk met servers wereldwijd. Laadtijd onder de 1 seconde.' },
                     { title: 'Domeinnaam naar keuze', text: 'Wij registreren en beheren jouw .nl-domein. Geen gedoe met DNS of nameservers.' },
                     { title: 'Zakelijke e-mailadressen', text: 'info@jouwnaam.nl en zoveel adressen als je nodig hebt, kant-en-klaar ingesteld.' },
                     { title: 'Google Analytics 4 & Search Console', text: 'Direct inzicht in wie jouw website bezoekt en hoe je scoort in Google.' },
@@ -616,10 +670,10 @@ export default function HomePage() {
                 <div className="pricing-divider" />
                 <ul className="pricing-features" aria-label="Functies Starter">
                   {[
-                    'Professionele website (t/m 5 pagina\'s)',
-                    'Hosting via Vercel (razendssnel)',
+                    'Professionele website (t/m 10 pagina\'s)',
+                    'Razendsnelle hosting inbegrepen',
                     'Domeinnaam .nl inbegrepen',
-                    '1 zakelijk e-mailadres',
+                    'Tot 5 zakelijke e-mailadressen',
                     'SSL-certificaat',
                     'Mobiel-responsive design',
                     'Google Analytics 4',
@@ -651,8 +705,8 @@ export default function HomePage() {
                 <ul className="pricing-features" aria-label="Functies Business">
                   {[
                     'Alles uit Starter',
-                    'Tot 10 pagina\'s',
-                    '3 zakelijke e-mailadressen',
+                    'Tot 20 pagina\'s',
+                    'Tot 25 zakelijke e-mailadressen',
                     'Contactformulier met e-mailkoppeling',
                     'Google Search Console',
                     'On-page SEO-optimalisatie',
@@ -686,7 +740,7 @@ export default function HomePage() {
                     'Alles uit Business',
                     'Onbeperkt pagina\'s',
                     'Blog of portfolio sectie',
-                    'Onbeperkte e-mailadressen',
+                    'Tot 100 zakelijke e-mailadressen',
                     'Uitgebreide SEO-strategie',
                     'Maandelijkse contentupdate',
                     'Google Ads landing page',
@@ -708,6 +762,71 @@ export default function HomePage() {
               Alle bedragen zijn excl. BTW. Minimale looptijd 3 maanden, daarna maandelijks opzegbaar.{' '}
               <a href="#faq">Veelgestelde vragen over de voorwaarden.</a>
             </p>
+          </div>
+        </section>
+
+        {/* ── GOOGLE ADS ADD-ON ── */}
+        <section className="addon-section" aria-labelledby="addon-heading">
+          <div className="container">
+            <div className="addon-inner">
+              <div className="addon-content">
+                <span className="section-tag">Add-on</span>
+                <h2 id="addon-heading" className="section-title" style={{ marginBottom: 16 }}>
+                  Meer klanten via<br />
+                  <span className="gradient-text">Google Ads</span>
+                </h2>
+                <p className="section-sub" style={{ textAlign: 'left', margin: '0 0 28px' }}>
+                  Een professionele website is de basis — Google Ads zorgt dat mensen je ook echt vinden. Combineer je websitelease met professioneel campagnebeheer en haal direct meer aanvragen binnen.
+                </p>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32 }}>
+                  {[
+                    'Campagnebeheer door gecertificeerde Google Ads specialist',
+                    'Campagne live binnen 1 week na intake',
+                    'Maandelijkse rapportage & optimalisatie',
+                    'Gericht op rendement, niet op klikken',
+                    'Combinatiekorting bij websitelease',
+                  ].map(item => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: '0.95rem', color: 'var(--text-muted)' }}>
+                      <span style={{ color: 'var(--teal)', marginTop: 2, flexShrink: 0 }}><IconCheck /></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a href="/google-ads" className="btn-primary">
+                  Meer over Google Ads <IconArrow />
+                </a>
+              </div>
+              <div className="addon-pricing">
+                <div className="addon-price-card">
+                  <p style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 8 }}>Vanaf</p>
+                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, marginBottom: 4 }}>
+                    <span style={{ fontFamily: 'var(--font-head)', fontSize: '3rem', fontWeight: 800, lineHeight: 1, color: 'var(--text)' }}>€99</span>
+                    <span style={{ color: 'var(--text-muted)', marginBottom: 6 }}>/maand</span>
+                  </div>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: 20 }}>
+                    Management fee — excl. advertentiebudget
+                  </p>
+                  <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                    {[
+                      { label: 'Basis', price: '€99/mnd', sub: '1 campagne, t/m €250 budget' },
+                      { label: 'Plus', price: '€149/mnd', sub: '2 campagnes, t/m €500 budget' },
+                      { label: 'Pro', price: '€199/mnd', sub: '4 campagnes, t/m €1.000 budget' },
+                    ].map(tier => (
+                      <div key={tier.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                        <div>
+                          <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text)' }}>{tier.label}</span>
+                          <span style={{ display: 'block', fontSize: '0.77rem', color: 'var(--text-muted)' }}>{tier.sub}</span>
+                        </div>
+                        <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--blue-light)', whiteSpace: 'nowrap' }}>{tier.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <a href="/google-ads" className="btn-secondary" style={{ marginTop: 24, width: '100%', justifyContent: 'center', display: 'flex' }}>
+                    Bekijk alle pakketten
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -780,7 +899,7 @@ export default function HomePage() {
                 <a href="#contact" className="btn-primary">
                   Gratis offerte aanvragen <IconArrow />
                 </a>
-                <a href="tel:0650742585" className="btn-secondary">
+                <a href="tel:0850806338" className="btn-secondary">
                   <IconPhone />
                   Bel ons direct
                 </a>
@@ -802,11 +921,11 @@ export default function HomePage() {
                   Vertel ons over jouw bedrijf en wij laten je zien wat er mogelijk is. Geen verkooppraatje — gewoon een eerlijk gesprek over wat jij nodig hebt.
                 </p>
                 <div className="contact-methods">
-                  <a href="tel:0650742585" className="contact-method">
+                  <a href="tel:0850806338" className="contact-method">
                     <div className="contact-method-icon"><IconPhone /></div>
                     <div>
                       <div className="contact-method-label">Telefoon</div>
-                      <div className="contact-method-value">06-50 74 25 85</div>
+                      <div className="contact-method-value">085-080 63 38</div>
                     </div>
                   </a>
                   <a href="mailto:info@lease-een-website.nl" className="contact-method">
@@ -851,13 +970,13 @@ export default function HomePage() {
                   <li><a href="#prijzen">Starter pakket</a></li>
                   <li><a href="#prijzen">Business pakket</a></li>
                   <li><a href="#prijzen">Pro pakket</a></li>
-                  <li><a href="#contact">Website op maat</a></li>
+                  <li><a href="/google-ads">Google Ads beheer</a></li>
                 </ul>
               </div>
               <div>
                 <p className="footer-col-title">Contact</p>
                 <ul className="footer-col-list" role="list">
-                  <li><a href="tel:0650742585">06-50 74 25 85</a></li>
+                  <li><a href="tel:0850806338">085-080 63 38</a></li>
                   <li><a href="mailto:info@lease-een-website.nl">info@lease-een-website.nl</a></li>
                 </ul>
               </div>
