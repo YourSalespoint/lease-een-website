@@ -548,7 +548,7 @@ export default function HomePage() {
                       <div className="hero-score-label">PageSpeed</div>
                     </div>
                     <div className="hero-score-item">
-                      <div className="hero-score-value" style={{ color: '#0050FF' }}>100</div>
+                      <div className="hero-score-value" style={{ color: '#6B3FFF' }}>100</div>
                       <div className="hero-score-label">SEO Score</div>
                     </div>
                     <div className="hero-score-item">
@@ -556,7 +556,7 @@ export default function HomePage() {
                       <div className="hero-score-label">SSL</div>
                     </div>
                     <div className="hero-score-item">
-                      <div className="hero-score-value" style={{ color: '#0050FF' }}>99.9%</div>
+                      <div className="hero-score-value" style={{ color: '#6B3FFF' }}>99.9%</div>
                       <div className="hero-score-label">Uptime</div>
                     </div>
                   </div>
