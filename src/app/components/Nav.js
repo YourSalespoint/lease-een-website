@@ -55,6 +55,8 @@ function Logo() {
   );
 }
 
+export { Logo };
+
 // ── NAV ITEMS ──────────────────────────────────────────────────────────────
 const NAV_ITEMS = [
   { label: 'Hoe het werkt', href: '/#hoe-het-werkt' },

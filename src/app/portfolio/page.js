@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import '../portfolio-styles.css';
-import Nav from '../components/Nav';
+import Nav, { Logo } from '../components/Nav';
 
 // ── FILTER DATA ──────────────────────────────────────────────────────────────
 const FILTERS = [
