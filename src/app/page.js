@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 // ── LOGO COMPONENT ─────────────────────────────────────────────────────────
 const LOGO_FRAMES = [
@@ -197,8 +198,9 @@ function FaqItem({ question, answer }) {
 
 // ── CONTACT FORM ───────────────────────────────────────────────────────────
 function ContactForm() {
+  const router = useRouter();
   const [form, setForm] = useState({ naam: '', bedrijf: '', email: '', telefoon: '', pakket: '', bericht: '' });
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle'); // idle | loading | error
   const [error, setError] = useState('');
 
   const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -214,8 +216,7 @@ function ContactForm() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error('Versturen mislukt');
-      setStatus('success');
-      setForm({ naam: '', bedrijf: '', email: '', telefoon: '', pakket: '', bericht: '' });
+      router.push('/bedankt');
     } catch {
       setStatus('error');
       setError('Er ging iets mis. Probeer het opnieuw of mail ons direct.');
@@ -1049,6 +1050,20 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp floating button */}
+      <a
+        href="https://wa.me/31850806338"
+        className="whatsapp-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="App via WhatsApp"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.98L0 24l6.18-1.57A11.96 11.96 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52z" fill="#25D366"/>
+          <path d="M17.47 14.38c-.28-.14-1.65-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.09-.16.18-.33.2-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.18-.28.28-.47.09-.18.05-.35-.02-.5-.07-.14-.63-1.52-.86-2.08-.23-.54-.46-.47-.63-.48h-.54c-.18 0-.47.07-.72.35-.25.28-.95.93-.95 2.26s.97 2.62 1.1 2.8c.14.18 1.9 2.9 4.6 4.07.64.28 1.14.44 1.53.56.64.2 1.22.17 1.68.1.51-.08 1.57-.64 1.8-1.26.22-.62.22-1.15.15-1.26-.07-.1-.25-.17-.53-.3z" fill="#fff"/>
+        </svg>
+      </a>
     </>
   );
 }
