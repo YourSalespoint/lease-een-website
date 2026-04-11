@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Nav from './components/Nav';
 
 // ── LOGO COMPONENT ─────────────────────────────────────────────────────────
 const LOGO_FRAMES = [
@@ -421,24 +422,6 @@ const faqSchema = {
 
 // ── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function HomePage() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const navItems = [
-    { label: 'Hoe het werkt', href: '#hoe-het-werkt' },
-    { label: 'Wat je krijgt', href: '#wat-je-krijgt' },
-    { label: 'Prijzen', href: '#prijzen' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Google Ads', href: '/google-ads' },
-    { label: 'FAQ', href: '#faq' },
-  ];
-
   return (
     <>
       <script
@@ -446,46 +429,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* ── NAV ── */}
-      <nav className={`nav${scrolled ? ' scrolled' : ''}`} aria-label="Hoofdnavigatie">
-        <div className="container">
-          <div className="nav-inner">
-            <Logo scrolled={scrolled} />
-            <ul className="nav-links" role="list">
-              {navItems.map(item => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-              <li>
-                <a href="#contact" className="nav-cta">Start je aanvraag</a>
-              </li>
-            </ul>
-            <button
-              className="nav-hamburger"
-              aria-label="Menu openen"
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen(true)}
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile drawer */}
-      <nav className={`nav-drawer${mobileOpen ? ' open' : ''}`} aria-label="Mobiel menu">
-        <button
-          style={{ position: 'absolute', top: 24, right: 24, background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', fontSize: '1.5rem' }}
-          onClick={() => setMobileOpen(false)}
-          aria-label="Menu sluiten"
-        >
-          ✕
-        </button>
-        {navItems.map(item => (
-          <a key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>{item.label}</a>
-        ))}
-        <a href="#contact" onClick={() => setMobileOpen(false)} style={{ color: 'var(--blue-light)', fontWeight: 700 }}>Start je aanvraag →</a>
-      </nav>
+      <Nav />
 
       <main>
         {/* ── HERO ── */}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Nav from '../components/Nav';
 
 const IconCheck = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -132,6 +133,8 @@ export default function GoogleAdsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
+      <Nav />
 
       <main style={{ paddingTop: 100 }}>
 
