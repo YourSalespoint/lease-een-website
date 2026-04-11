@@ -434,6 +434,7 @@ export default function HomePage() {
     { label: 'Hoe het werkt', href: '#hoe-het-werkt' },
     { label: 'Wat je krijgt', href: '#wat-je-krijgt' },
     { label: 'Prijzen', href: '#prijzen' },
+    { label: 'Portfolio', href: '/portfolio' },
     { label: 'Google Ads', href: '/google-ads' },
     { label: 'FAQ', href: '#faq' },
   ];

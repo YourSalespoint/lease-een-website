@@ -1,0 +1,363 @@
+/* ─── PORTFOLIO PAGE ────────────────────────────────────── */
+.port-hero {
+  background: var(--dark-bg);
+  padding: 120px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.port-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(107,63,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.port-label {
+  display: inline-block;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #A78BFF;
+  background: rgba(107,63,255,0.18);
+  border: 1px solid rgba(107,63,255,0.3);
+  border-radius: 99px; padding: 6px 16px; margin-bottom: 24px;
+}
+.port-h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800; color: var(--dark-text);
+  line-height: 1.1; margin-bottom: 16px;
+}
+.port-sub {
+  color: var(--dark-muted); font-size: 1.1rem;
+  max-width: 520px; margin: 0 auto 40px; line-height: 1.65;
+}
+.port-stats { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.port-stat strong { display: block; font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--dark-text); line-height: 1; margin-bottom: 4px; }
+.port-stat span { font-size: 0.82rem; color: var(--dark-muted); }
+
+.port-filters { padding: 40px 24px 0; max-width: 1200px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.port-filter-btn { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; padding: 8px 18px; border-radius: 99px; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+.port-filter-btn:hover, .port-filter-btn.active { background: var(--blue); border-color: var(--blue); color: white; }
+
+.port-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+.port-card { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.port-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(107,63,255,0.12); }
+
+.port-browser { background: #E8E8F0; padding: 10px 12px 0; }
+.port-browser-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.port-browser-dots { display: flex; gap: 5px; }
+.port-browser-dot { width: 9px; height: 9px; border-radius: 50%; }
+.port-browser-dot:nth-child(1) { background: #FF5F57; }
+.port-browser-dot:nth-child(2) { background: #FFBD2E; }
+.port-browser-dot:nth-child(3) { background: #28C840; }
+.port-browser-url { flex: 1; background: white; border-radius: 6px; padding: 4px 10px; font-size: 0.68rem; color: #999; font-family: var(--font-body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.port-browser-url strong { color: #333; font-weight: 600; }
+
+.port-preview { height: 240px; overflow: hidden; position: relative; }
+
+.port-meta { padding: 20px 22px 22px; }
+.port-tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.port-tag { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; }
+.port-tag-branch { background: var(--bg-surface); color: var(--blue); }
+.port-tag-pakket { background: rgba(0,200,168,0.1); color: #009E87; }
+.port-card-name { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.port-card-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ── MINI SITE SHARED ── */
+.ms { height: 100%; font-family: var(--font-body); overflow: hidden; }
+.ms-nav { padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.ms-logo { display: flex; align-items: center; gap: 6px; }
+.ms-btn { font-size: 0.58rem; font-weight: 700; padding: 4px 10px; cursor: default; }
+.ms-photo { object-fit: cover; display: block; }
+.ms-fullbg { flex: 1; position: relative; overflow: hidden; }
+.ms-fullbg-img { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.ms-fullbg-overlay { position: absolute; inset: 0; }
+.ms-fullbg-content { position: relative; z-index: 1; padding: 14px 16px; }
+.ms-fullbg-bottom { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; z-index: 1; }
+
+/* 1. Loodgieter */
+.ms-loodgieter { background: #0F1729; }
+.ms-loodgieter .ms-nav { background: #0A0E1A; }
+.ms-loodgieter .ms-logo-icon { width: 20px; height: 20px; background: #FF6B35; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.ms-loodgieter .ms-logo-name { font-size: 0.7rem; font-weight: 700; color: white; }
+.ms-loodgieter .ms-btn-cta { background: #FF6B35; color: white; border-radius: 5px; }
+.ms-loodgieter .ms-strip { background: #FF6B35; padding: 5px 16px; display: flex; gap: 14px; }
+.ms-loodgieter .ms-strip-item { font-size: 0.52rem; font-weight: 700; color: white; }
+.ms-loodgieter .ms-hero { padding: 15px 16px; background: linear-gradient(135deg, #0F1729, #1A2440); }
+.ms-loodgieter .ms-badge { display: inline-block; background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.4); color: #FF6B35; font-size: 0.52rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.07em; }
+.ms-loodgieter .ms-h1 { font-size: 0.95rem; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 6px; }
+.ms-loodgieter .ms-h1 em { font-style: normal; color: #FF6B35; }
+.ms-loodgieter .ms-sub { font-size: 0.57rem; color: #8899BB; line-height: 1.4; margin-bottom: 10px; }
+.ms-loodgieter .ms-btns { display: flex; gap: 6px; }
+.ms-loodgieter .ms-btn-p { background: #FF6B35; color: white; border-radius: 5px; }
+.ms-loodgieter .ms-btn-s { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); border-radius: 5px; }
+
+/* 2. Verloskundige */
+.ms-verloskundige { background: #FEF9F5; }
+.ms-verloskundige .ms-nav { background: white; border-bottom: 1px solid #F5E8DF; }
+.ms-verloskundige .ms-logo-name { font-size: 0.72rem; font-weight: 700; color: #8B4A6B; font-family: Georgia, serif; font-style: italic; }
+.ms-verloskundige .ms-btn-cta { background: #C97BA0; color: white; border-radius: 99px; }
+.ms-verloskundige .ms-hero { padding: 16px 16px 0; display: grid; grid-template-columns: 1fr 88px; gap: 10px; align-items: start; }
+.ms-verloskundige .ms-tag { font-size: 0.52rem; color: #C97BA0; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+.ms-verloskundige .ms-h1 { font-size: 0.88rem; font-weight: 700; color: #3D1A2E; line-height: 1.25; margin-bottom: 7px; font-family: Georgia, serif; font-style: italic; }
+.ms-verloskundige .ms-sub { font-size: 0.56rem; color: #8B6070; line-height: 1.4; margin-bottom: 9px; }
+.ms-verloskundige .ms-btn-p { background: #C97BA0; color: white; border-radius: 99px; display: inline-block; }
+.ms-verloskundige .ms-photo { width: 86px; height: 118px; border-radius: 50px 50px 40px 40px; }
+
+/* 3. Aannemer */
+.ms-aannemer { background: #111; display: flex; flex-direction: column; }
+.ms-aannemer .ms-nav { background: #0A0A0A; border-bottom: 2px solid #F5C800; }
+.ms-aannemer .ms-logo-box { width: 18px; height: 18px; background: #F5C800; transform: skewX(-8deg); }
+.ms-aannemer .ms-logo-name { font-size: 0.7rem; font-weight: 900; color: white; text-transform: uppercase; letter-spacing: 0.05em; }
+.ms-aannemer .ms-btn-cta { background: #F5C800; color: #111; border-radius: 3px; text-transform: uppercase; font-size: 0.55rem; }
+.ms-aannemer .ms-fullbg-overlay { background: linear-gradient(to right, rgba(10,10,10,0.88), rgba(10,10,10,0.4)); }
+.ms-aannemer .ms-kader { border-left: 3px solid #F5C800; padding-left: 8px; margin-bottom: 7px; }
+.ms-aannemer .ms-h1 { font-size: 0.9rem; font-weight: 900; color: white; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.02em; }
+.ms-aannemer .ms-h1 em { font-style: normal; color: #F5C800; }
+.ms-aannemer .ms-sub { font-size: 0.55rem; color: #ccc; margin: 7px 0 10px; line-height: 1.4; }
+.ms-aannemer .ms-btns { display: flex; gap: 6px; }
+.ms-aannemer .ms-btn-p { background: #F5C800; color: #111; border-radius: 3px; text-transform: uppercase; font-weight: 800; }
+.ms-aannemer .ms-btn-s { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); border-radius: 3px; }
+
+/* 4. Tandarts */
+.ms-tandarts { background: #F0F8FF; }
+.ms-tandarts .ms-nav { background: white; box-shadow: 0 1px 8px rgba(0,120,200,0.08); }
+.ms-tandarts .ms-logo-circle { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #0099DD, #00CCBB); }
+.ms-tandarts .ms-logo-name { font-size: 0.7rem; font-weight: 700; color: #003D66; }
+.ms-tandarts .ms-btn-cta { background: #0099DD; color: white; border-radius: 6px; }
+.ms-tandarts .ms-hero { padding: 16px 16px 10px; display: grid; grid-template-columns: 1fr 76px; gap: 10px; }
+.ms-tandarts .ms-score { display: inline-flex; align-items: center; gap: 4px; background: #E8F7FF; border-radius: 99px; padding: 3px 8px; margin-bottom: 7px; }
+.ms-tandarts .ms-score-num { font-size: 0.62rem; font-weight: 800; color: #0099DD; }
+.ms-tandarts .ms-score-txt { font-size: 0.5rem; color: #4A8FAA; }
+.ms-tandarts .ms-h1 { font-size: 0.88rem; font-weight: 800; color: #003D66; line-height: 1.2; margin-bottom: 5px; }
+.ms-tandarts .ms-h1 em { font-style: normal; color: #0099DD; }
+.ms-tandarts .ms-sub { font-size: 0.55rem; color: #5580AA; line-height: 1.4; margin-bottom: 8px; }
+.ms-tandarts .ms-btn-p { background: #0099DD; color: white; border-radius: 6px; display: inline-block; }
+.ms-tandarts .ms-photo { width: 74px; height: 100px; border-radius: 12px; }
+
+/* 5. Kapsalon */
+.ms-kapsalon { background: #0D0A07; display: flex; flex-direction: column; }
+.ms-kapsalon .ms-nav { background: rgba(13,10,7,0.95); border-bottom: 1px solid rgba(212,175,55,0.25); }
+.ms-kapsalon .ms-logo-name { font-size: 0.72rem; color: #D4AF37; letter-spacing: 0.15em; text-transform: uppercase; font-family: Georgia, serif; }
+.ms-kapsalon .ms-btn-cta { border: 1px solid #D4AF37; color: #D4AF37; border-radius: 2px; letter-spacing: 0.04em; }
+.ms-kapsalon .ms-fullbg-overlay { background: linear-gradient(to top, rgba(13,10,7,0.92) 0%, rgba(13,10,7,0.55) 50%, rgba(13,10,7,0.15) 100%); }
+.ms-kapsalon .ms-divider { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ms-kapsalon .ms-divider-line { flex: 1; max-width: 24px; height: 1px; background: rgba(212,175,55,0.45); }
+.ms-kapsalon .ms-divider-txt { font-size: 0.5rem; color: #D4AF37; letter-spacing: 0.14em; text-transform: uppercase; }
+.ms-kapsalon .ms-h1 { font-size: 0.92rem; font-weight: 700; color: #F5EDD5; line-height: 1.2; margin-bottom: 8px; font-family: Georgia, serif; font-style: italic; }
+.ms-kapsalon .ms-row { display: flex; align-items: center; gap: 10px; }
+.ms-kapsalon .ms-btn-p { background: #D4AF37; color: #0D0A07; border-radius: 2px; font-weight: 700; }
+.ms-kapsalon .ms-price-item span { display: block; font-size: 0.48rem; color: rgba(212,175,55,0.65); }
+.ms-kapsalon .ms-price-item strong { font-size: 0.56rem; color: #F5EDD5; }
+
+/* 6. Fysiotherapeut */
+.ms-fysio { background: #F2FBF7; }
+.ms-fysio .ms-nav { background: white; border-bottom: 1px solid #D4EEE0; }
+.ms-fysio .ms-logo-cross { width: 18px; height: 18px; background: #00A86B; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.ms-fysio .ms-logo-name { font-size: 0.68rem; font-weight: 700; color: #004D30; }
+.ms-fysio .ms-btn-cta { background: #00A86B; color: white; border-radius: 99px; }
+.ms-fysio .ms-hero { padding: 16px 16px 8px; display: grid; grid-template-columns: 1fr 76px; gap: 10px; align-items: start; }
+.ms-fysio .ms-pill { display: inline-flex; align-items: center; gap: 4px; background: #D4EEE0; border-radius: 99px; padding: 3px 8px; margin-bottom: 7px; }
+.ms-fysio .ms-pill-dot { width: 5px; height: 5px; background: #00A86B; border-radius: 50%; }
+.ms-fysio .ms-pill-txt { font-size: 0.5rem; font-weight: 700; color: #004D30; text-transform: uppercase; letter-spacing: 0.06em; }
+.ms-fysio .ms-h1 { font-size: 0.88rem; font-weight: 800; color: #003820; line-height: 1.2; margin-bottom: 5px; }
+.ms-fysio .ms-h1 em { font-style: normal; color: #00A86B; }
+.ms-fysio .ms-sub { font-size: 0.55rem; color: #4A7A60; line-height: 1.4; margin-bottom: 9px; }
+.ms-fysio .ms-btns { display: flex; gap: 6px; }
+.ms-fysio .ms-btn-p { background: #00A86B; color: white; border-radius: 99px; }
+.ms-fysio .ms-btn-s { border: 1px solid #B0D8C0; color: #00A86B; border-radius: 99px; }
+.ms-fysio .ms-photo { width: 74px; height: 100px; border-radius: 40px 40px 30px 30px; }
+
+/* 7. Hovenier */
+.ms-hovenier { display: flex; flex-direction: column; background: #1C2415; }
+.ms-hovenier .ms-nav { background: rgba(20,26,14,0.96); }
+.ms-hovenier .ms-logo-leaf { width: 18px; height: 18px; background: #5A8A3A; border-radius: 0 60% 0 60%; transform: rotate(-30deg); }
+.ms-hovenier .ms-logo-name { font-size: 0.68rem; font-weight: 700; color: #D4E8B8; }
+.ms-hovenier .ms-btn-cta { background: #C8692A; color: white; border-radius: 5px; }
+.ms-hovenier .ms-fullbg-overlay { background: linear-gradient(135deg, rgba(20,26,14,0.82), rgba(20,26,14,0.35)); }
+.ms-hovenier .ms-season { font-size: 0.5rem; color: #C8692A; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+.ms-hovenier .ms-h1 { font-size: 0.92rem; font-weight: 800; color: #D4E8B8; line-height: 1.2; margin-bottom: 5px; }
+.ms-hovenier .ms-h1 em { font-style: normal; color: #C8692A; }
+.ms-hovenier .ms-sub { font-size: 0.55rem; color: rgba(212,232,184,0.75); line-height: 1.4; margin-bottom: 10px; }
+.ms-hovenier .ms-btns { display: flex; gap: 6px; }
+.ms-hovenier .ms-btn-p { background: #5A8A3A; color: white; border-radius: 5px; }
+.ms-hovenier .ms-btn-s { background: #C8692A; color: white; border-radius: 5px; }
+
+/* 8. Schoonheidssalon */
+.ms-beauty { background: #FAF7FF; }
+.ms-beauty .ms-nav { background: white; box-shadow: 0 1px 0 rgba(120,80,200,0.08); }
+.ms-beauty .ms-logo-name { font-size: 0.72rem; font-weight: 700; color: #5B2A8F; }
+.ms-beauty .ms-logo-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: linear-gradient(135deg, #9B59B6, #E056A0); margin-left: 2px; vertical-align: middle; }
+.ms-beauty .ms-btn-cta { background: linear-gradient(135deg, #9B59B6, #E056A0); color: white; border-radius: 99px; }
+.ms-beauty .ms-hero { padding: 16px 16px 0; }
+.ms-beauty .ms-label { font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; color: #9B59B6; text-transform: uppercase; margin-bottom: 5px; }
+.ms-beauty .ms-h1 { font-size: 0.92rem; font-weight: 800; color: #2D1155; line-height: 1.2; margin-bottom: 5px; }
+.ms-beauty .ms-h1 em { color: #9B59B6; font-family: Georgia, serif; }
+.ms-beauty .ms-sub { font-size: 0.55rem; color: #7A5A99; line-height: 1.4; margin-bottom: 10px; }
+.ms-beauty .ms-btn-p { background: linear-gradient(135deg, #9B59B6, #E056A0); color: white; border-radius: 99px; display: inline-block; }
+.ms-beauty .ms-treats { display: flex; gap: 5px; margin-top: 12px; }
+.ms-beauty .ms-treat { flex: 1; background: white; border: 1px solid rgba(155,89,182,0.15); border-radius: 8px; padding: 6px 4px; text-align: center; }
+.ms-beauty .ms-treat-icon { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, rgba(155,89,182,0.12), rgba(224,86,160,0.12)); margin: 0 auto 3px; }
+.ms-beauty .ms-treat-name { font-size: 0.46rem; font-weight: 600; color: #5B2A8F; }
+
+/* 9. Advocatenkantoor */
+.ms-advocaat { background: #F5F0E8; display: flex; flex-direction: column; }
+.ms-advocaat .ms-topbar { background: #1A1A2E; padding: 5px 16px; display: flex; align-items: center; justify-content: space-between; }
+.ms-advocaat .ms-topbar-txt { font-size: 0.48rem; color: rgba(255,255,255,0.45); letter-spacing: 0.07em; }
+.ms-advocaat .ms-topbar-num { font-size: 0.48rem; color: #C9A84C; font-weight: 700; }
+.ms-advocaat .ms-nav { background: #F5F0E8; border-bottom: 2px solid #1A1A2E; }
+.ms-advocaat .ms-logo-wrap { display: flex; flex-direction: column; }
+.ms-advocaat .ms-logo-name { font-family: Georgia, serif; font-size: 0.7rem; font-weight: 700; color: #1A1A2E; line-height: 1; }
+.ms-advocaat .ms-logo-sub { font-size: 0.43rem; color: #C9A84C; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1px; }
+.ms-advocaat .ms-btn-cta { background: #1A1A2E; color: #C9A84C; font-size: 0.52rem; letter-spacing: 0.05em; }
+.ms-advocaat .ms-body { flex: 1; display: grid; grid-template-columns: 1fr 80px; }
+.ms-advocaat .ms-left { padding: 12px 12px 8px; border-right: 1px solid rgba(26,26,46,0.15); }
+.ms-advocaat .ms-eyebrow { font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: #C9A84C; font-weight: 700; margin-bottom: 7px; }
+.ms-advocaat .ms-h1 { font-family: Georgia, serif; font-size: 0.85rem; font-weight: 700; color: #1A1A2E; line-height: 1.25; margin-bottom: 8px; }
+.ms-advocaat .ms-rule { height: 1px; background: rgba(26,26,46,0.15); margin: 7px 0; }
+.ms-advocaat .ms-exp-label { font-size: 0.44rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+.ms-advocaat .ms-exp-list { list-style: none; }
+.ms-advocaat .ms-exp-list li { font-size: 0.53rem; color: #1A1A2E; padding: 2px 0; border-bottom: 1px solid rgba(26,26,46,0.07); display: flex; align-items: center; gap: 5px; }
+.ms-advocaat .ms-exp-list li::before { content: ''; width: 4px; height: 4px; background: #C9A84C; display: block; flex-shrink: 0; }
+.ms-advocaat .ms-right { background: #1A1A2E; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 10px; }
+.ms-advocaat .ms-stat { text-align: center; }
+.ms-advocaat .ms-stat-num { display: block; font-family: Georgia, serif; font-size: 1rem; font-weight: 700; color: #C9A84C; line-height: 1; }
+.ms-advocaat .ms-stat-lbl { font-size: 0.4rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+.ms-advocaat .ms-stat-div { width: 22px; height: 1px; background: rgba(201,168,76,0.3); }
+
+/* 10. Restaurant */
+.ms-restaurant { background: #0A0806; display: flex; flex-direction: column; }
+.ms-restaurant .ms-nav { background: rgba(10,8,6,0.7); backdrop-filter: blur(4px); }
+.ms-restaurant .ms-logo-name { font-family: Georgia, serif; font-size: 0.78rem; font-weight: 700; color: white; }
+.ms-restaurant .ms-logo-dot { color: #E8903A; }
+.ms-restaurant .ms-nav-links { display: flex; gap: 10px; }
+.ms-restaurant .ms-nav-link { font-size: 0.5rem; color: rgba(255,255,255,0.55); }
+.ms-restaurant .ms-nav-link.active { color: #E8903A; font-weight: 600; }
+.ms-restaurant .ms-fullbg-overlay { background: linear-gradient(to top, rgba(10,8,6,0.95) 0%, rgba(10,8,6,0.4) 50%, rgba(10,8,6,0.1) 100%); }
+.ms-restaurant .ms-open { display: inline-flex; align-items: center; gap: 4px; background: rgba(232,144,58,0.15); border: 1px solid rgba(232,144,58,0.4); border-radius: 99px; padding: 2px 8px; margin-bottom: 5px; }
+.ms-restaurant .ms-open-dot { width: 5px; height: 5px; background: #4CAF50; border-radius: 50%; }
+.ms-restaurant .ms-open-txt { font-size: 0.48rem; color: #E8903A; font-weight: 700; }
+.ms-restaurant .ms-h1 { font-family: Georgia, serif; font-size: 0.88rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 6px; font-style: italic; }
+.ms-restaurant .ms-menu-row { display: flex; gap: 5px; }
+.ms-restaurant .ms-dish { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 7px; flex: 1; }
+.ms-restaurant .ms-dish-name { font-size: 0.5rem; color: white; font-weight: 600; }
+.ms-restaurant .ms-dish-price { font-size: 0.48rem; color: #E8903A; font-weight: 700; margin-top: 1px; }
+
+/* 11. Autogarage */
+.ms-garage { background: #111; display: flex; flex-direction: column; }
+.ms-garage .ms-nav { background: #0A0A0A; }
+.ms-garage .ms-logo-plate { width: 22px; height: 15px; border: 2px solid #D42B2B; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 0.4rem; font-weight: 900; color: white; }
+.ms-garage .ms-logo-name { font-size: 0.7rem; font-weight: 900; color: white; text-transform: uppercase; letter-spacing: 0.06em; }
+.ms-garage .ms-btn-cta { background: #D42B2B; color: white; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.ms-garage .ms-content { flex: 1; padding: 12px 16px; position: relative; overflow: hidden; }
+.ms-garage .ms-diag { position: absolute; top: -20px; right: -10px; width: 45%; height: 140%; background: #D42B2B; transform: skewX(-12deg); opacity: 0.07; }
+.ms-garage .ms-diag2 { position: absolute; top: -20px; right: 10px; width: 2px; height: 140%; background: #D42B2B; transform: skewX(-12deg); }
+.ms-garage .ms-badge { display: inline-block; background: #D42B2B; color: white; font-size: 0.48rem; font-weight: 800; padding: 2px 8px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
+.ms-garage .ms-h1 { font-size: 0.88rem; font-weight: 900; color: white; line-height: 1.15; text-transform: uppercase; margin-bottom: 9px; position: relative; z-index: 1; }
+.ms-garage .ms-services { display: flex; flex-direction: column; gap: 4px; position: relative; z-index: 1; }
+.ms-garage .ms-svc-row { display: flex; align-items: center; gap: 7px; }
+.ms-garage .ms-svc-num { font-size: 0.52rem; font-weight: 900; color: #D42B2B; width: 14px; }
+.ms-garage .ms-svc-name { font-size: 0.55rem; color: rgba(255,255,255,0.8); }
+.ms-garage .ms-svc-bar { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+.ms-garage .ms-svc-price { font-size: 0.5rem; color: #888; }
+
+/* 12. Makelaar */
+.ms-makelaar { background: white; }
+.ms-makelaar .ms-nav { background: white; border-bottom: 1px solid #EEE; }
+.ms-makelaar .ms-logo-sq { width: 18px; height: 18px; background: #003580; border-radius: 4px; }
+.ms-makelaar .ms-logo-name { font-size: 0.7rem; font-weight: 800; color: #003580; }
+.ms-makelaar .ms-btn-cta { background: #003580; color: white; border-radius: 6px; }
+.ms-makelaar .ms-hero { background: linear-gradient(160deg, #003580, #0050B3); padding: 14px 16px 16px; }
+.ms-makelaar .ms-h1 { font-size: 0.8rem; font-weight: 800; color: white; margin-bottom: 9px; line-height: 1.2; }
+.ms-makelaar .ms-search { background: white; border-radius: 8px; padding: 6px 8px; display: flex; align-items: center; gap: 5px; }
+.ms-makelaar .ms-search-icon { color: #003580; }
+.ms-makelaar .ms-search-txt { font-size: 0.52rem; color: #999; flex: 1; }
+.ms-makelaar .ms-search-btn { background: #003580; color: white; font-size: 0.5rem; font-weight: 700; padding: 3px 7px; border-radius: 5px; }
+.ms-makelaar .ms-props { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px 16px; }
+.ms-makelaar .ms-prop { border: 1px solid #EEE; border-radius: 8px; overflow: hidden; }
+.ms-makelaar .ms-prop-img { height: 40px; background-size: cover; background-position: center; position: relative; }
+.ms-makelaar .ms-prop-price { position: absolute; bottom: 3px; left: 4px; background: #003580; color: white; font-size: 0.45rem; font-weight: 800; padding: 1px 5px; border-radius: 3px; }
+.ms-makelaar .ms-prop-info { padding: 4px 6px; }
+.ms-makelaar .ms-prop-name { font-size: 0.5rem; font-weight: 700; color: #111; }
+.ms-makelaar .ms-prop-sub { font-size: 0.44rem; color: #999; }
+
+/* 13. Kinderopvang */
+.ms-kdv { background: #FFF9F0; }
+.ms-kdv .ms-nav { background: white; border-bottom: 3px solid #FFD600; }
+.ms-kdv .ms-logo-blocks { display: flex; gap: 2px; }
+.ms-kdv .ms-block { width: 8px; height: 8px; border-radius: 2px; }
+.ms-kdv .ms-logo-name { font-size: 0.72rem; font-weight: 800; color: #333; }
+.ms-kdv .ms-btn-cta { background: #FF6B35; color: white; border-radius: 99px; font-weight: 800; }
+.ms-kdv .ms-hero { background: linear-gradient(135deg, #FFD600, #FF9500); padding: 13px 16px 10px; position: relative; overflow: hidden; }
+.ms-kdv .ms-circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.15); }
+.ms-kdv .ms-h1 { font-size: 0.92rem; font-weight: 900; color: #1A1000; line-height: 1.2; margin-bottom: 5px; position: relative; z-index: 1; }
+.ms-kdv .ms-sub { font-size: 0.56rem; color: rgba(26,16,0,0.7); margin-bottom: 9px; position: relative; z-index: 1; }
+.ms-kdv .ms-badges { display: flex; gap: 5px; padding: 8px 16px; flex-wrap: wrap; }
+.ms-kdv .ms-badge-item { font-size: 0.5rem; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
+
+/* 14. Elektricien */
+.ms-elektricien { background: #0D0F14; position: relative; overflow: hidden; }
+.ms-elektricien .ms-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,214,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,214,0,0.04) 1px, transparent 1px); background-size: 16px 16px; pointer-events: none; }
+.ms-elektricien .ms-glow { position: absolute; top: 40px; right: 20px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(255,214,0,0.1) 0%, transparent 70%); pointer-events: none; }
+.ms-elektricien .ms-nav { background: rgba(13,15,20,0.95); border-bottom: 1px solid rgba(255,214,0,0.18); position: relative; z-index: 1; }
+.ms-elektricien .ms-logo-bolt { width: 18px; height: 18px; background: #FFD600; clip-path: polygon(60% 0%, 40% 45%, 65% 45%, 30% 100%, 55% 55%, 35% 55%); }
+.ms-elektricien .ms-logo-name { font-size: 0.7rem; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 0.06em; }
+.ms-elektricien .ms-btn-cta { background: #FFD600; color: #0D0F14; border-radius: 4px; font-weight: 800; }
+.ms-elektricien .ms-hero { padding: 13px 16px; position: relative; z-index: 1; }
+.ms-elektricien .ms-tag { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 7px; }
+.ms-elektricien .ms-tag-line { width: 14px; height: 2px; background: #FFD600; }
+.ms-elektricien .ms-tag-txt { font-size: 0.48rem; color: #FFD600; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.ms-elektricien .ms-h1 { font-size: 0.9rem; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 8px; }
+.ms-elektricien .ms-h1 em { font-style: normal; color: #FFD600; }
+.ms-elektricien .ms-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.ms-elektricien .ms-svc { background: rgba(255,214,0,0.06); border: 1px solid rgba(255,214,0,0.14); border-radius: 5px; padding: 6px 8px; display: flex; align-items: center; gap: 5px; }
+.ms-elektricien .ms-svc-dot { width: 5px; height: 5px; background: #FFD600; border-radius: 50%; flex-shrink: 0; }
+.ms-elektricien .ms-svc-name { font-size: 0.52rem; color: rgba(255,255,255,0.8); font-weight: 600; }
+
+/* 15. Personal trainer */
+.ms-trainer { background: #0C0C0C; display: flex; flex-direction: column; }
+.ms-trainer .ms-nav { background: #0C0C0C; border-bottom: 1px solid #1A1A1A; }
+.ms-trainer .ms-logo-name { font-size: 0.72rem; font-weight: 900; color: white; text-transform: uppercase; letter-spacing: 0.08em; }
+.ms-trainer .ms-logo-slash { color: #FF4500; }
+.ms-trainer .ms-btn-cta { background: linear-gradient(90deg, #FF4500, #FF8C00); color: white; border-radius: 4px; font-weight: 800; }
+.ms-trainer .ms-body { flex: 1; display: grid; grid-template-columns: 1fr 88px; }
+.ms-trainer .ms-left { padding: 12px 13px; }
+.ms-trainer .ms-h1 { font-size: 0.85rem; font-weight: 900; color: white; line-height: 1.15; text-transform: uppercase; margin-bottom: 5px; }
+.ms-trainer .ms-h1 em { font-style: normal; background: linear-gradient(90deg, #FF4500, #FF8C00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.ms-trainer .ms-sub { font-size: 0.53rem; color: #555; line-height: 1.4; margin-bottom: 10px; }
+.ms-trainer .ms-stats { display: flex; flex-direction: column; gap: 5px; }
+.ms-trainer .ms-stat-row { display: flex; align-items: center; gap: 6px; }
+.ms-trainer .ms-stat-lbl { font-size: 0.46rem; color: #555; width: 48px; text-transform: uppercase; letter-spacing: 0.04em; }
+.ms-trainer .ms-bar-wrap { flex: 1; height: 4px; background: #222; border-radius: 99px; }
+.ms-trainer .ms-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #FF4500, #FF8C00); }
+.ms-trainer .ms-right { background: #141414; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 10px; border-left: 2px solid #FF4500; }
+.ms-trainer .ms-big-num { font-size: 1.3rem; font-weight: 900; color: white; line-height: 1; text-align: center; }
+.ms-trainer .ms-big-lbl { font-size: 0.4rem; color: #FF4500; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; text-align: center; }
+.ms-trainer .ms-divider-h { width: 18px; height: 1px; background: #2A2A2A; }
+
+/* 16. Dierenarts */
+.ms-dierenarts { background: #F0FBF8; }
+.ms-dierenarts .ms-nav { background: white; border-bottom: 1px solid #C8EDE5; }
+.ms-dierenarts .ms-logo-paw { width: 20px; height: 20px; background: #00B88A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
+.ms-dierenarts .ms-logo-name { font-size: 0.7rem; font-weight: 700; color: #004D38; }
+.ms-dierenarts .ms-btn-cta { background: #00B88A; color: white; border-radius: 99px; }
+.ms-dierenarts .ms-hero { padding: 14px 16px 0; display: grid; grid-template-columns: 1fr 86px; gap: 10px; align-items: start; }
+.ms-dierenarts .ms-open { display: inline-flex; align-items: center; gap: 4px; margin-bottom: 5px; }
+.ms-dierenarts .ms-open-dot { width: 6px; height: 6px; background: #00B88A; border-radius: 50%; }
+.ms-dierenarts .ms-open-txt { font-size: 0.5rem; color: #00B88A; font-weight: 700; }
+.ms-dierenarts .ms-h1 { font-size: 0.86rem; font-weight: 800; color: #003828; line-height: 1.2; margin-bottom: 5px; }
+.ms-dierenarts .ms-h1 em { font-style: normal; color: #00B88A; }
+.ms-dierenarts .ms-sub { font-size: 0.54rem; color: #4A8070; line-height: 1.4; margin-bottom: 8px; }
+.ms-dierenarts .ms-btn-p { display: inline-block; background: #00B88A; color: white; font-size: 0.55rem; font-weight: 700; padding: 5px 12px; border-radius: 99px; }
+.ms-dierenarts .ms-photo { width: 84px; height: 104px; border-radius: 50px 50px 16px 16px; object-position: center top; }
+.ms-dierenarts .ms-pets { display: flex; gap: 5px; padding: 8px 16px 4px; }
+.ms-dierenarts .ms-pet-pill { background: white; border: 1px solid #C8EDE5; border-radius: 99px; padding: 3px 9px; font-size: 0.48rem; color: #004D38; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .port-grid { grid-template-columns: 1fr; }
+  .port-filters { padding-top: 28px; }
+}
