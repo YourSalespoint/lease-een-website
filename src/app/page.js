@@ -1138,6 +1138,7 @@ export default function HomePage() {
                   <li><a href="#hoe-het-werkt">Hoe het werkt</a></li>
                   <li><a href="#wat-je-krijgt">Wat je krijgt</a></li>
                   <li><a href="#prijzen">Prijzen</a></li>
+                  <li><a href="/portfolio">Portfolio</a></li>
                   <li><a href="#faq">FAQ</a></li>
                   <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1149,6 +1150,7 @@ export default function HomePage() {
                   <li><a href="#prijzen">Business pakket</a></li>
                   <li><a href="#prijzen">Pro pakket</a></li>
                   <li><a href="/google-ads">Google Ads beheer</a></li>
+                  <li><a href="/portfolio">Voorbeelden bekijken</a></li>
                 </ul>
               </div>
               <div>
