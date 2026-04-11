@@ -451,7 +451,7 @@ export default function PortfolioPage() {
       <main>
         {/* ── HERO ── */}
         <section className="port-hero" aria-labelledby="portfolio-heading">
-          <div className="port-label">Ons werk</div>
+          <div className="port-label">Inspiratie</div>
           <h1 id="portfolio-heading" className="port-h1">
             Websites die <span className="gradient-text">écht werken</span>
           </h1>
@@ -551,7 +551,7 @@ export default function PortfolioPage() {
                   <li><a href="/#hoe-het-werkt">Hoe het werkt</a></li>
                   <li><a href="/#wat-je-krijgt">Wat je krijgt</a></li>
                   <li><a href="/#prijzen">Prijzen</a></li>
-                  <li><a href="/portfolio">Portfolio</a></li>
+                  <li><a href="/portfolio">Inspiratie</a></li>
                   <li><a href="/#contact">Contact</a></li>
                 </ul>
               </div>

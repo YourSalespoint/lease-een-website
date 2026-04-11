@@ -836,7 +836,7 @@ export default function HomePage() {
         <section className="port-teaser" aria-labelledby="portfolio-heading">
           <div className="container">
             <div className="section-header">
-              <span className="section-tag">Portfolio</span>
+              <span className="section-tag">Inspiratie</span>
               <h2 id="portfolio-heading" className="section-title">
                 Websites voor elke <span className="highlight">branche</span>
               </h2>
@@ -945,7 +945,7 @@ export default function HomePage() {
             </div>
             <div className="port-teaser-cta">
               <a href="/portfolio" className="btn-primary">
-                Bekijk alle 16 voorbeelden
+                Bekijk alle inspiratievoorbeelden
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -1082,7 +1082,7 @@ export default function HomePage() {
                   <li><a href="#hoe-het-werkt">Hoe het werkt</a></li>
                   <li><a href="#wat-je-krijgt">Wat je krijgt</a></li>
                   <li><a href="#prijzen">Prijzen</a></li>
-                  <li><a href="/portfolio">Portfolio</a></li>
+                  <li><a href="/portfolio">Inspiratie</a></li>
                   <li><a href="#faq">FAQ</a></li>
                   <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1094,7 +1094,7 @@ export default function HomePage() {
                   <li><a href="#prijzen">Business pakket</a></li>
                   <li><a href="#prijzen">Pro pakket</a></li>
                   <li><a href="/google-ads">Google Ads beheer</a></li>
-                  <li><a href="/portfolio">Voorbeelden bekijken</a></li>
+                  <li><a href="/portfolio">Inspiratie bekijken</a></li>
                 </ul>
               </div>
               <div>
