@@ -1,8 +1,14 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 
 export default function BedanktPage() {
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'offerte_aanvraag' });
+  }, []);
+
   return (
     <>
       <style>{`

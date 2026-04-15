@@ -161,7 +161,7 @@ export default function GoogleAdsPage() {
                 <a href="/#contact" className="btn-primary">
                   Vraag gratis advies aan <IconArrow />
                 </a>
-                <a href="tel:0850806338" className="btn-secondary">
+                <a href="tel:0850806338" className="btn-secondary" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'telefoon_klik' }); }}>
                   <IconPhone />
                   085-080 63 38
                 </a>
@@ -395,7 +395,7 @@ export default function GoogleAdsPage() {
                 <a href="/#contact" className="btn-primary">
                   Gratis adviesgesprek aanvragen <IconArrow />
                 </a>
-                <a href="tel:0850806338" className="btn-secondary">
+                <a href="tel:0850806338" className="btn-secondary" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'telefoon_klik' }); }}>
                   <IconPhone />
                   085-080 63 38
                 </a>
