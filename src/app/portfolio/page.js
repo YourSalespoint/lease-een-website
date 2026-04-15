@@ -568,7 +568,7 @@ export default function PortfolioPage() {
                 <p className="footer-col-title">Contact</p>
                 <ul className="footer-col-list" role="list">
                   <li><a href="tel:0850806338" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'telefoon_klik' }); }}>085-080 63 38</a></li>
-                  <li><a href="mailto:info@lease-een-website.nl">info@lease-een-website.nl</a></li>
+                  <li><a href="mailto:info@lease-een-website.nl" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mail_klik' }); }}>info@lease-een-website.nl</a></li>
                 </ul>
               </div>
             </div>

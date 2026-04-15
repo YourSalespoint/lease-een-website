@@ -17,6 +17,7 @@
 | 4 | Trigger - telefoon_klik | Custom Event | `telefoon_klik` |
 | 5 | Trigger - whatsapp_klik | Custom Event | `whatsapp_klik` |
 | 6 | Trigger - offerte_aanvraag | Custom Event | `offerte_aanvraag` |
+| 13 | Trigger - mail_klik | Custom Event | `mail_klik` |
 
 ## GTM-tags
 
@@ -25,6 +26,7 @@
 | 7 | GA4 - telefoon_klik | GA4 Event | Trigger 4 |
 | 8 | GA4 - whatsapp_klik | GA4 Event | Trigger 5 |
 | 9 | GA4 - offerte_aanvraag | GA4 Event | Trigger 6 |
+| 14 | GA4 - mail_klik | GA4 Event | Trigger 13 |
 
 ## Hoe de events worden getriggerd (website-code)
 
@@ -53,3 +55,5 @@ useEffect(() => {
 - `src/app/portfolio/page.js` — 2x telefoon + 1x WhatsApp
 - `src/app/google-ads/page.js` — 2x telefoon
 - `src/app/bedankt/page.js` — offerte_aanvraag via useEffect
+- `src/app/page.js` — 2x mail_klik op mailto-links
+- `src/app/portfolio/page.js` — 1x mail_klik op mailto-link

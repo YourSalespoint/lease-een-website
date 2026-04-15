@@ -1050,7 +1050,7 @@ export default function HomePage() {
                       <div className="contact-method-value">085-080 63 38</div>
                     </div>
                   </a>
-                  <a href="mailto:info@lease-een-website.nl" className="contact-method">
+                  <a href="mailto:info@lease-een-website.nl" className="contact-method" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mail_klik' }); }}>
                     <div className="contact-method-icon"><IconMail /></div>
                     <div>
                       <div className="contact-method-label">E-mail</div>
@@ -1101,7 +1101,7 @@ export default function HomePage() {
                 <p className="footer-col-title">Contact</p>
                 <ul className="footer-col-list" role="list">
                   <li><a href="tel:0850806338" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'telefoon_klik' }); }}>085-080 63 38</a></li>
-                  <li><a href="mailto:info@lease-een-website.nl">info@lease-een-website.nl</a></li>
+                  <li><a href="mailto:info@lease-een-website.nl" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mail_klik' }); }}>info@lease-een-website.nl</a></li>
                 </ul>
               </div>
             </div>
