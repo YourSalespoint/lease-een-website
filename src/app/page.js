@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Nav from './components/Nav';
 
@@ -201,8 +201,14 @@ function FaqItem({ question, answer }) {
 function ContactForm() {
   const router = useRouter();
   const [form, setForm] = useState({ naam: '', bedrijf: '', email: '', telefoon: '', pakket: '', bericht: '' });
+  const [honeypot, setHoneypot] = useState('');
+  const loadTimeRef = useRef(null);
   const [status, setStatus] = useState('idle'); // idle | loading | error
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    loadTimeRef.current = Date.now();
+  }, []);
 
   const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -214,7 +220,7 @@ function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, _hp: honeypot, _t: loadTimeRef.current }),
       });
       if (!res.ok) throw new Error('Versturen mislukt');
       router.push('/bedankt');
@@ -267,6 +273,11 @@ function ContactForm() {
       <div className="form-group">
         <label htmlFor="bericht">Vertel ons over jouw bedrijf</label>
         <textarea id="bericht" name="bericht" placeholder="Wat doet jouw bedrijf? Heb je al een website? Wat verwacht je van een nieuwe site?" value={form.bericht} onChange={handleChange} rows={4} />
+      </div>
+      {/* Honeypot — verborgen voor mensen, bots vullen dit in */}
+      <div style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+        <label htmlFor="website_url">Website</label>
+        <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e => setHoneypot(e.target.value)} />
       </div>
       {status === 'error' && <div className="form-error">{error}</div>}
       <button type="submit" className="btn-primary" disabled={status === 'loading'} style={{ width: '100%', justifyContent: 'center' }}>

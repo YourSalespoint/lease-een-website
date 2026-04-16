@@ -1,7 +1,17 @@
 import nodemailer from 'nodemailer';
 
 export async function POST(request) {
-  const { naam, bedrijf, email, telefoon, pakket, bericht } = await request.json();
+  const { naam, bedrijf, email, telefoon, pakket, bericht, _hp, _t } = await request.json();
+
+  // Honeypot: bot heeft het verborgen veld ingevuld — stil negeren
+  if (_hp) {
+    return Response.json({ ok: true });
+  }
+
+  // Tijdcheck: submit binnen 3 seconden na laden = bot — stil negeren
+  if (_t && Date.now() - _t < 3000) {
+    return Response.json({ ok: true });
+  }
 
   if (!naam || !email) {
     return Response.json({ error: 'Naam en e-mail zijn verplicht.' }, { status: 400 });
